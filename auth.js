@@ -2,8 +2,8 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const jwt = require("jsonwebtoken");
 const { User } = require("./models");
-const GOOGLE_CLIENT_ID = "520999183618-dk5drjr37h8q70hqf2grqg20kgf8t552.apps.googleusercontent.com"
-const GOOGLE_CLIENT_SECRET = "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"
+const GOOGLE_CLIENT_ID = ""
+const GOOGLE_CLIENT_SECRET = ""
 const JWT_SECRET = "secret_key";
 
 const express = require("express")
