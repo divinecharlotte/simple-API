@@ -3,6 +3,13 @@ const { sequelize } = require(".");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
+    googleId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true,
-        unique: true,
       },
     },
   });

@@ -7,23 +7,23 @@ sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
 
 // const JWT_SECRET = "secret_key";
 
-const registerUser = async(req,res) => {
-console.log("you can create a user");
+const registerUser = async (req, res) => {
+  console.log("you can create a user");
 
   User.create({
     firstName: "divine",
-    email: "divinemaina@gmail.com"
-}).catch(err =>{
-    if (err){
-        console.log(err)
+    email: "divinemaina@gmail.com",
+  }).catch((err) => {
+    if (err) {
+      console.log(err);
     }
-})
-res.send("insert")
-
+  });
+  res.send("insert");
 };
- const authUser = async(req,res)=>{
+
+const authUser = async (req, res) => {
   res.send('<a href="/users/auth/google">authenticate with google </a>');
- }
+};
 
 const getAllUsers = async (req, res) => {
   try {
@@ -32,7 +32,7 @@ const getAllUsers = async (req, res) => {
     for (let user of users) {
       const email = {
         to: user.email,
-        from: "keepallyprivate@gmail.com",
+        from: "divinemaina@gmail.com",
         subject: "Test sendGrid",
         text: "This is a test for send grid",
         html: "<p>Example Body</p>",
@@ -47,6 +47,8 @@ const getAllUsers = async (req, res) => {
     return res
       .status(200)
       .json({ message: "Emails sent and saved successfully" });
+
+    // res.status(200).json({ users });
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -55,5 +57,5 @@ const getAllUsers = async (req, res) => {
 module.exports = {
   authUser,
   registerUser,
-  getAllUsers
+  getAllUsers,
 };
