@@ -15,8 +15,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true,
+        unique: true,
       },
     },
   });
+
+  User.associate = function (models) {
+    User.hasMany(models.Email, {
+      foreignKey: "userId",
+      as: "emails",
+      onDelete: "CASCADE",
+    });
+  };
+
   return User;
 };
